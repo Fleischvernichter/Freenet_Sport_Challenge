@@ -11,14 +11,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-
-    <!-- to specify swagger properties
-        documentation.services.basePath=http://localhost:8080/swagger-springmvc-test
-    documentation.services.version=1.0
-    -->
-    <context:property-placeholder location="classpath:swagger.properties" />
-
-    <context:component-scan base-package="de.freenet.coremediaLogging" />
+    <context:component-scan base-package="sport_challenge" />
 
     <context:annotation-config />
 
@@ -28,14 +21,6 @@
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-    <!-- Configuration Bean -->
-    <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
-
-    <!-- Custom extensibility module (bean) Has override methods to customize the document generation-->
-    <!--
-    <bean id="extensibilityModule" class="com.mangofactory.swagger.springmvc.example.config.ExampleExtensibilityModule" />
-    -->
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>
