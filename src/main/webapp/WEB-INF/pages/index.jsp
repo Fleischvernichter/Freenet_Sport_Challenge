@@ -10,9 +10,10 @@
 
 <jsp:include page="templates/middle.jsp"/>
 
-<div>
-  blaaaa
+<div class="page_outer">
+  <div class="alert alert-info">
+    <h2>Sport Challenge</h2>
+  </div>
 </div>
-
 
 <jsp:include page="templates/footer.jsp"/>
