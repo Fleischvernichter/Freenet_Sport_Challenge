@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 public class IndexController {
 
-  @RequestMapping(value = "index", method = RequestMethod.GET)
+  @RequestMapping(value = "/index", method = RequestMethod.GET)
   private String getIndexPage(ModelMap model) {
 
 
