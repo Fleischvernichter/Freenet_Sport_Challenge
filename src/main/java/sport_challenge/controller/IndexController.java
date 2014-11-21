@@ -23,12 +23,12 @@ public class IndexController {
   private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
   @Autowired
-  private UsersServiceImpl userService;
+  private UsersServiceImpl usersServiceImpl;
 
   @RequestMapping(value = "/index", method = RequestMethod.GET)
   private String getIndexPage(ModelMap model) {
 
-    List<Users> userList = userService.getUsers();
+    List<Users> userList = usersServiceImpl.getUsers();
     for (Users user : userList) {
       LOGGER.debug("User:"+user.getId()+"<>"+user.getName());
     }

@@ -1,10 +1,7 @@
 package sport_challenge.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by aschulz1 on 21.11.14.
@@ -14,9 +11,16 @@ import javax.persistence.Table;
 public class Sports {
 
   @Id
-  @GeneratedValue
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 }

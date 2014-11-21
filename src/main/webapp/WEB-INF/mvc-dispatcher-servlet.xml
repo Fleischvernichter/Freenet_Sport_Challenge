@@ -26,12 +26,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-        <!--<property name="driverClassName" value="${database.driver}" />-->
-        <!--<property name="url" value="${database.url}" />-->
-        <!--<property name="username" value="${database.user}" />-->
-        <!--<property name="password" value="${database.password}" />-->
-    <!--</bean>-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/freenet_sport_challenge" />
@@ -42,7 +36,12 @@
     <!-- Hibernate 4 SessionFactory Bean definition -->
     <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="annotatedPackages" value="sport_challenge.entities"/>
+        <!--<property name="annotatedPackages" value="sport_challenge.entities"/>-->
+        <property name="annotatedClasses">
+            <list>
+                <value>sport_challenge.entities.Users</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
@@ -51,6 +50,10 @@
             </props>
         </property>
     </bean>
+
+    <!--<bean id="personService" class="sport_challenge.services.UsersServiceImpl">-->
+        <!--<property name="userDaoImpl" ref="userDaoImpl"></property>-->
+    <!--</bean>-->
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

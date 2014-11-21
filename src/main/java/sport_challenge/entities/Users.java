@@ -1,9 +1,7 @@
 package sport_challenge.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,10 +13,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "users")
-public class Users {
+public class Users implements Serializable {
 
   @Id
-  @GeneratedValue
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
   private String name;

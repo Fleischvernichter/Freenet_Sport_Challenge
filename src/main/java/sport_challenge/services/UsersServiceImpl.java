@@ -1,9 +1,10 @@
 package sport_challenge.services;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sport_challenge.dao.UserDao;
+import sport_challenge.dao.impl.UserDaoImpl;
 import sport_challenge.entities.Users;
 
 import java.util.List;
@@ -19,10 +20,20 @@ import java.util.List;
 @Service
 public class UsersServiceImpl {
 
-  private UserDao userDao;
+  @Autowired
+  private UserDaoImpl userDaoImpl;
+
+//  public void setUserDaoImpl(UserDaoImpl userDaoImpl) {
+//    this.userDaoImpl = userDaoImpl;
+//  }
 
   @Transactional
   public List<Users> getUsers() {
-    return this.userDao.getUsers();
+    return this.userDaoImpl.getUsers();
+  }
+
+  @Transactional
+  public void addUser(Users user) {
+    userDaoImpl.addUser(user);
   }
 }

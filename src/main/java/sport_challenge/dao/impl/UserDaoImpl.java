@@ -3,7 +3,7 @@ package sport_challenge.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import sport_challenge.dao.UserDao;
+import org.springframework.stereotype.Repository;
 import sport_challenge.entities.Users;
 
 import java.util.List;
@@ -14,18 +14,25 @@ import java.util.List;
  * Date: 21.11.14
  * Time: 15:51
  * To change this template use File | Settings | File Templates.
+ *
  */
-public class UserDaoImpl implements UserDao {
+
+@Repository
+public class UserDaoImpl {
 
   @Autowired
   private SessionFactory sessionFactory;
 
-  @Override
   public List<Users> getUsers() {
     Session session = this.sessionFactory.getCurrentSession();
 
-    List<Users> userList = session.createQuery("from Users").list();
+    List<Users> userList = session.createQuery("from sport_challenge.entities.Users").list();
 
     return userList;
+  }
+
+  public void addUser(Users user) {
+    Session session = this.sessionFactory.getCurrentSession();
+    session.saveOrUpdate(user);
   }
 }
